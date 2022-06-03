@@ -10,13 +10,12 @@ namespace Appointment.Services
     {
         private readonly AppDbContext _context;
 
-
         public AppointmentService(AppDbContext context) 
         {
             _context = context;
         }
 
-        public object GetAppointment(BookedAppoinmentsDTO bookedDto)
+        public List<Response> GetAppointment(BookedAppoinmentsDTO bookedDto)
         {
             var employee = _context.Employee.FirstOrDefault(emp => emp.Id == bookedDto.EmployeeId);
 
@@ -36,8 +35,8 @@ namespace Appointment.Services
             for (int i = 0; i < testString.Count(); i += 2) 
             {
                 if (testString[i] != testString[i + 1]
-                    && DateTime.Parse(testString[i]) != DateTime.Parse(todayDate + " " + employee.Break.Start)
-                    && DateTime.Parse(testString[i + 1]) != DateTime.Parse(todayDate + " " + employee.Break.End)) { 
+                    && DateTime.Parse(testString[i]) != employee.Break.Start.AddDay(todayDate)
+                    && DateTime.Parse(testString[i + 1]) != employee.Break.End.AddDay(todayDate)) { 
 
                 availableTimeSlot.Add(new Appointment.Dto.Response { Start = testString[i], End = testString[i + 1] });
                 

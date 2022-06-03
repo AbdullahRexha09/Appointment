@@ -4,6 +4,6 @@ namespace Appointment.Services
 {
     public interface IAppointmentService
     {
-        object GetAppointment(BookedAppoinmentsDTO dTO);
+        List<Response> GetAppointment(BookedAppoinmentsDTO dTO);
     }
 }

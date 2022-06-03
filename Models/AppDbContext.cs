@@ -41,7 +41,7 @@ namespace Appointment.Models
 
             modelBuilder.Entity<Employee>().HasData(new Employee[]
             {
-                new Employee{ Id = Guid.NewGuid(),
+                new Employee{ Id = Guid.Parse("EC450A2D-1675-4199-B742-FEE1BECBBDFB"),
                     Name = "Abdullah",
                     Email = "abdullahrexha09@gmail.com",
                     WorkingScheduleId = Guid.Parse("7a44de32-c577-40e8-b638-8059d4d821d4"),
